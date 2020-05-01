@@ -39,8 +39,6 @@ export class UsuarioService {
   }
 
 
-
-
   crearusuario(usuario: Usuario) {
     const url = `${environment.url}/usuario`;
     return this.httpClient.post(url, usuario).pipe(map((data: any) => {
@@ -54,3 +52,4 @@ export class UsuarioService {
     }));
   }
 }
+     
