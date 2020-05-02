@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
 })
 export class UsuarioService {
 
-  // public usuario: Usuario;
+  public usuario: Usuario;
 
   constructor(private httpClient: HttpClient) { }
 
