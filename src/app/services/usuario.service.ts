@@ -34,6 +34,7 @@ export class UsuarioService {
     }));
   }
 
+  // Crear un usuario
   crearusuario(usuario: Usuario) {
     const url = `${environment.url}/usuario`;
     return this.httpClient.post(url, usuario).pipe(map((data: any) => {
@@ -44,6 +45,15 @@ export class UsuarioService {
       console.log('err: ', err);
       Swal.fire(err.error.mensaje, err.error.errors.errors.email.message, 'error');
       return throwError(err);
+    }));
+  }
+
+  // obtener todos los usuario
+  getUsuarios() {
+    const url = `${environment.url}/usuario`;
+    return this.httpClient.get(url).pipe(map((usuarios: Usuario) => {
+      console.log('usuarios: ', usuarios);
+      return usuarios['usuarios'];
     }));
   }
 }
