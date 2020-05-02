@@ -6,18 +6,14 @@ import { throwError } from 'rxjs/';
 import { map, catchError } from 'rxjs/operators';
 import Swal from 'sweetalert2';
 
-
-
-
 @Injectable({
   providedIn: 'root'
 })
 export class UsuarioService {
 
+  public usuario: Usuario;
+
   constructor(private httpClient: HttpClient) { }
-
-
-
 
    // Metodo de login normal de usuario
    login(usuario: Usuario, recordar?: boolean) {
