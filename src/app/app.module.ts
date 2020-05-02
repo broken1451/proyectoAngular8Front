@@ -19,6 +19,7 @@ import { PagesComponent } from './pages/pages.component';
 import { BreadcumbsComponent } from './shared/breadcumbs/breadcumbs.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { UsuariosComponent } from './pages/usuarios/usuarios.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { UsuariosComponent } from './pages/usuarios/usuarios.component';
     PagesComponent,
     BreadcumbsComponent,
     DashboardComponent,
-    UsuariosComponent
+    UsuariosComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
