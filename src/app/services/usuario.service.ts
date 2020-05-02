@@ -37,7 +37,7 @@ export class UsuarioService {
       return throwError(err);
     }));
   }
-
+           
 
   crearusuario(usuario: Usuario) {
     const url = `${environment.url}/usuario`;
@@ -52,4 +52,3 @@ export class UsuarioService {
     }));
   }
 }
-     
