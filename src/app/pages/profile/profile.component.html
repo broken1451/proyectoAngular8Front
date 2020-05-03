@@ -1,1 +1,28 @@
-<p>profile works!</p>
+<div class="row">
+    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+        <div class="card">
+            <h5 class="card-header">Basic Form</h5>
+            <div class="card-body">
+                <form id="basicform" ngNativeValidate #formulario='ngForm' (ngSubmit)= 'guardar(formulario.value)' data-parsley-validate="">
+                    <div class="form-group">
+                        <label for="inputUserName">Nombre</label>
+                        <input id="inputUserName" type="text" [(ngModel)]="usuario.nombre" name="nombre" data-parsley-trigger="change" required placeholder="Enter user name" autocomplete="off" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail">Correo</label>
+                        <input id="inputEmail" type="email"  [(ngModel)]="usuario.email" name="email" data-parsley-trigger="change" required placeholder="Enter email" autocomplete="off" class="form-control">
+                    </div>
+                 
+                    <div class="col-sm-12 pl-0">
+                        <p class="text-right">
+                            <button type="submit" class="btn btn-space btn-primary btn-block">Submit</button>
+                            <button class="btn btn-space btn-secondary btn-block">Cancel</button>
+                        </p>
+                    </div>
+                
+                
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
