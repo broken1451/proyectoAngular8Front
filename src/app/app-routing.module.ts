@@ -7,6 +7,7 @@ import { ContenidoComponent } from './pages/contenido/contenido.component';
 import { PagesComponent } from './pages/pages.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { UsuariosComponent } from './pages/usuarios/usuarios.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 
 const routes: Routes = [
@@ -18,6 +19,7 @@ const routes: Routes = [
       { path: 'home', component: HomeComponent, data: {titulo: 'Home', descrip: 'Esto es la pagina principal'} },
       { path: 'contenido', component: ContenidoComponent, data: {titulo: 'Contenido', descrip: 'Esto es la pagina del contenido'}},
       { path: 'usuarios', component: UsuariosComponent, data: {titulo: 'Usuarios', descrip: 'Esto es la pagina de los usuarios'}},
+      { path: 'profile', component: ProfileComponent, data: {titulo: 'Perfil', descrip: 'Esto es la pagina del perfil de usuario'}},
       { path: '', pathMatch: 'full' , redirectTo: 'home' }
     ]
   },
