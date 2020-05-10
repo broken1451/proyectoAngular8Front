@@ -27,6 +27,7 @@ export class UsuariosComponent implements OnInit {
   }
 
   borrarUsuario(usuario: Usuario) {
+      console.log(usuario);
       console.log(usuario._id);
       console.log(this.usuarioService.usuario._id);
       if (usuario._id  === this.usuarioService.usuario._id) {
@@ -38,6 +39,7 @@ export class UsuariosComponent implements OnInit {
         text: 'Borrara el usurio ' + usuario.nombre,
         icon: 'warning',
         showCancelButton: true,
+        allowOutsideClick: false,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         confirmButtonText: 'Si'

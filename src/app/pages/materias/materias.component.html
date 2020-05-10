@@ -1,0 +1,58 @@
+<div class="row text+center"> 
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="card">
+            <h5 class="card-header">Listado de materias</h5>
+                <button (click)='crearMateria()' class="btn btn-rounded btn-success btnButton">
+                    <i class="fas fa-plus"></i>
+                    Crear Materia
+                </button>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered first text-center">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Nombre Usuario</th>
+                                <th>Nombre Materia</th>
+                                <!-- <th>Crear materia</th> -->
+                                <th>Ver materia</th>
+                                <th>Editar materia</th>
+                                <th>Eliminar materia</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let materia of materias; let i=index">
+                                <td>{{i + 1}}</td>
+                                <td>
+                                    <input class="form-control text-center" disabled name="nombre" [(ngModel)]="materia.usuario.nombre" type="text">
+                                </td>
+                                <td>
+                                    <input class="form-control text-center" disabled name="nombre" [(ngModel)]="materia.nombre" type="text">
+                                </td>
+                                <!-- <td><button (click)='crearMateria()' class="btn btn-rounded btn-success">
+                                    <i class="fas fa-plus"></i>
+                                    Crear</button></td> -->
+                                <td><button  (click)="verMateria(materia)" class="btn btn-rounded btn-info">
+                                    <i class="fas fa-info"></i>
+                                    Ver</button></td>
+                                   
+                                <td>
+                                  <button (click)="actualizarMateria(materia)" class="btn btn-rounded btn-primary">  <!--  -->
+                                    <i class="fas fa-edit"></i>
+                                    Editar
+                                </button>
+                            </td>
+                                <td>
+                                 <button (click)="borrarMateria(materia)" class="btn btn-rounded btn-danger">
+                                    <i class="fas fa-trash"></i>
+                                    Eliminar
+                                </button>
+                            </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -13,7 +13,7 @@
                             <th scope="col">#</th>
                             <th scope="col">Nombre</th>
                             <th scope="col">Correo</th>
-                            <th scope="col">Opciones</th>
+                            <th scope="col">Eliminar usuario</th>
                             <!-- <th scope="col">Foto</th> -->
                         </tr>
                     </thead>
@@ -23,10 +23,13 @@
                             <td>{{usuario.nombre}}</td>
                             <td>{{usuario.email}}</td>
                             <!-- <td>@mdo</td> -->
-                            <button  class="btn btn-danger btn-block mb-2"  (click)="borrarUsuario(usuario)"> 
-                                <i class="fas fa-trash"></i>
-                                Eliminar
-                            </button>
+                            <td>
+                                <button (click)="borrarUsuario(usuario)" class="btn btn-rounded btn-danger">
+                                    <i class="fas fa-trash"></i>
+                                    Eliminar
+                                </button>
+                            </td>
+                            
                         </tr>
                     </tbody>
                 </table>

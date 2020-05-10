@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { throwError } from 'rxjs/';
 import { map, catchError } from 'rxjs/operators';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -15,7 +16,7 @@ export class UsuarioService {
   public usuario: Usuario;
   public token: string;
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient, private router: Router) {
     this.cargarStorage();
   }
 
@@ -55,6 +56,20 @@ export class UsuarioService {
       return throwError(err);
     }));
   }
+
+  // Metodo para saber si esta logueado el usuario y se usa con el guard
+  estaLogueado() {
+    // return (this.token.length > 1) ? true : false;
+
+    if (localStorage.getItem('token') || localStorage.getItem('usuario')) {
+      console.log('Paso por el login guard de la funcion estaLogueado');
+      return true;
+    } else {
+      console.log('Debe estar logueado');
+      return false;
+    }
+}
+
 
   // obtener todos los usuario
   getUsuarios() {
@@ -113,4 +128,13 @@ export class UsuarioService {
       return this.httpClient.delete(url);
    }
 
+   // Metodo de logout
+  logout() {
+    this.usuario = null;
+    this.token = '';
+    localStorage.removeItem('token');
+    localStorage.removeItem('usuario');
+    localStorage.removeItem('menu');
+    this.router.navigate(['/login']);
+  }
 }
