@@ -21,6 +21,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { UsuariosComponent } from './pages/usuarios/usuarios.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { MateriasComponent } from './pages/materias/materias.component';
+import { EstudiantesComponent } from './pages/estudiantes/estudiantes.component';
+import { EstudianteComponent } from './pages/estudiantes/estudiante.component';
 
 
 @NgModule({
@@ -38,7 +40,9 @@ import { MateriasComponent } from './pages/materias/materias.component';
     DashboardComponent,
     UsuariosComponent,
     ProfileComponent,
-    MateriasComponent
+    MateriasComponent,
+    EstudiantesComponent,
+    EstudianteComponent
   ],
   imports: [
     BrowserModule,

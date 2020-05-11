@@ -10,6 +10,8 @@ import { UsuariosComponent } from './pages/usuarios/usuarios.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { LoginGuard } from './services/guards/login.guard';
 import { MateriasComponent } from './pages/materias/materias.component';
+import { EstudiantesComponent } from './pages/estudiantes/estudiantes.component';
+import { EstudianteComponent } from './pages/estudiantes/estudiante.component';
 
 
 const routes: Routes = [
@@ -24,6 +26,8 @@ const routes: Routes = [
       { path: 'usuarios', component: UsuariosComponent, data: {titulo: 'Usuarios', descrip: 'Esto es la pagina de los usuarios'}},
       { path: 'profile', component: ProfileComponent, data: {titulo: 'Perfil', descrip: 'Esto es la pagina del perfil de usuario'}},
       { path: 'materias', component: MateriasComponent, data: {titulo: 'Materias', descrip: 'Esto es la pagina de materias'}},
+      { path: 'estudiantes', component: EstudiantesComponent, data: {titulo: 'Estudiantes', descrip: 'Esto es la pagina de los estudiantes'}},
+      { path: 'estudiante/:id', component: EstudianteComponent, data: {titulo: 'Materias', descrip: 'Esto es la pagina del estudiante'}},
       { path: '', pathMatch: 'full' , redirectTo: 'home' }
     ]
   },
