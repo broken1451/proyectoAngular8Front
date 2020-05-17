@@ -27,7 +27,7 @@ const routes: Routes = [
       { path: 'profile', component: ProfileComponent, data: {titulo: 'Perfil', descrip: 'Esto es la pagina del perfil de usuario'}},
       { path: 'materias', component: MateriasComponent, data: {titulo: 'Materias', descrip: 'Esto es la pagina de materias'}},
       { path: 'estudiantes', component: EstudiantesComponent, data: {titulo: 'Estudiantes', descrip: 'Esto es la pagina de los estudiantes'}},
-      { path: 'estudiante/:id', component: EstudianteComponent, data: {titulo: 'Materias', descrip: 'Esto es la pagina del estudiante'}},
+      { path: 'estudiante/:id', component: EstudianteComponent, data: {titulo: 'Estudiante', descrip: 'Esto es la pagina del estudiante'}},
       { path: '', pathMatch: 'full' , redirectTo: 'home' }
     ]
   },

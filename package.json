@@ -19,6 +19,8 @@
     "@angular/platform-browser": "~9.0.1",
     "@angular/platform-browser-dynamic": "~9.0.1",
     "@angular/router": "~9.0.1",
+    "@ng-select/ng-select": "^4.0.0",
+    "ng2-select": "^2.0.0",
     "rxjs": "~6.5.4",
     "rxjs-compat": "^6.5.5",
     "sweetalert2": "^9.10.12",

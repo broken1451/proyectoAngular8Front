@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 // Componentes
 import { AppComponent } from './app.component';
@@ -23,6 +24,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { MateriasComponent } from './pages/materias/materias.component';
 import { EstudiantesComponent } from './pages/estudiantes/estudiantes.component';
 import { EstudianteComponent } from './pages/estudiantes/estudiante.component';
+
 
 
 @NgModule({
@@ -49,7 +51,8 @@ import { EstudianteComponent } from './pages/estudiantes/estudiante.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
