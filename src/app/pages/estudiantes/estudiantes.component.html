@@ -1,0 +1,111 @@
+
+<div *ngIf="loading" class="card-body text-center">
+    <span class="dashboard-spinner spinner-xs"></span>
+</div>
+
+<div class="row text+center"> 
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="card">
+            <h5 class="card-header">Listado de Estudiantes</h5>
+            <!-- <button  (click)="crearEstudiante()" class="btn btn-rounded btn-success btnButton"> -->
+            <button *ngIf="!loading" type="button"  class="btn btn-rounded btn-success btnButton" data-toggle="modal" data-target="#exampleModal">
+                <i class="fas fa-plus"></i>
+                Ingreso de Estudiante
+            </button>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered first text-center">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Nombre Estudiante</th>
+                                <th>Nombre Materia</th>
+                                <th>Profesor Asignado</th>
+                                <th>Ver estudiante</th>
+                                <th>Editar estudiante</th>
+                                <th>Eliminar estudiante</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let estudiante of estudiantes; let i=index">
+                                <td>{{ i + 1 }}</td>
+                                <td>
+                                    <input class="form-control text-center" disabled name="nombre" [(ngModel)]="estudiante.nombre" type="text">
+                                </td>
+                                <td>
+                                    <input class="form-control text-center" disabled name="nombre" [(ngModel)]="estudiante.materia.nombre" type="text">
+                                </td>
+                                <td>
+                                    <input class="form-control text-center" disabled name="nombre" [(ngModel)]="estudiante.usuario.nombre" type="text">
+                                </td>
+                                <!-- <td><button (click)='crearMateria()' class="btn btn-rounded btn-success">
+                                    <i class="fas fa-plus"></i>
+                                    Crear</button></td> -->
+                                <td><button (click)="verEstudiante(estudiante)" class="btn btn-rounded btn-info">
+                                    <i class="fas fa-info"></i>
+                                    Ver</button></td>
+                                   
+                                <td>
+                                  <button  class="btn btn-rounded btn-primary" [routerLink]="['/estudiante', estudiante._id]"> 
+                                    <i class="fas fa-edit"></i>
+                                    Editar
+                                </button>
+                            </td>
+                                <td>
+                                 <button (click)="borrarEstudiantes(estudiante)" class="btn btn-rounded btn-danger">
+                                    <i class="fas fa-trash"></i>
+                                    Eliminar
+                                </button>
+                            </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"data-backdrop="static" data-keyboard='false'>
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-center centro" id="exampleModalLabel">Crear Estudiantes</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form ngNativeValidate #formulario='ngForm' (ngSubmit)='crearEstudiante(formulario)'>
+                <div class="form-group">
+                  <label for="nombre">Nombre:</label>
+                  <input type="text" name="estudiantesnombre" required [(ngModel)]="estudiantesnombre" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  <!-- {{estudiantesnombre}} -->
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Seleccione una materia</label>
+                  <!-- <input type="text" name="estudiantesmateria" required [(ngModel)]="estudiantesmateria" class="form-control" id="exampleInputPassword1">  -->
+                  <select required id="selec" class=" form-control" required name="estudiantesmateria" [(ngModel)]="estudiantesmateria">
+                    <!-- <option  selected></option> -->
+                    <!-- <option value="0" disabled selected>Select your option</option> -->
+                    <!-- <option>Choose your framework</option> -->
+                    <!-- <option  value=" " disabled selected>Seleccione una materia </option> -->
+                    <option [ngValue]="undefined" hidden>Seleccione una materia</option>
+                    <option *ngFor="let materia of materias; let i = index" [value]="materia._id" > {{materia.nombre}}</option>
+                </select>
+                <!-- {{estudiantesmateria}} -->
+        
+                </div>
+                <div class="form-group">
+                  <label for="usuario">Usuario</label>
+                  <input disabled type="text" name="estudianteusuario" required [(ngModel)]="estudianteusuario" class="form-control" id="usuario"> 
+                  <!-- {{estudianteusuario}} -->
+                </div>
+                <button type="submit"  class="btn btn-primary">Crear</button>
+                <button type="button" class="btn btn-secondary ml-4" data-dismiss="modal">Close</button>
+              </form>
+        </div>
+      </div>
+    </div>
+  </div>

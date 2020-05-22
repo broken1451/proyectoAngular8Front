@@ -1,1 +1,22 @@
-<p>dashboard works!</p>
+<div *ngIf="loading" class="card-body text-center">
+    <span class="dashboard-spinner spinner-xs"></span>
+</div>
+<div class="row">
+    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12" *ngFor="let digimon of digimons">
+        <!-- .card -->
+        <div class="card card-figure">
+            <!-- .card-figure -->
+            <figure class="figure">
+                <img class="img-fluid" [src]="digimon.img" alt="Card image cap">
+                <!-- .figure-caption -->
+                <figcaption class="figure-caption">
+                    <h6 class="figure-title"> {{digimon.name}} </h6>
+                    <p class="text-muted mb-0"> Nivel: <span class="badge badge-primary"> {{digimon.level}} </span></p>
+                </figcaption>
+                <!-- /.figure-caption -->
+            </figure>
+            <!-- /.card-figure -->
+            <!-- /.card -->
+        </div>
+    </div>
+</div>

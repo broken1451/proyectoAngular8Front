@@ -14,7 +14,7 @@ export class LoginGuard implements CanActivate {
   // tslint:disable-next-line: max-line-length
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     if (this.usuarioService.estaLogueado()) {
-      console.log('Paso por el guard');
+      // console.log('Paso por el guard');
       return true;
     } else {
       this.router.navigate(['/login']);
@@ -28,7 +28,7 @@ export class LoginGuard implements CanActivate {
         cancelButtonColor: '#d33',
         confirmButtonText: 'Aceptar'
       })
-      console.log('Debe estar autenticado Bloqueado');
+      // console.log('Debe estar autenticado Bloqueado');
       return false;
     }
   }

@@ -6,6 +6,7 @@ import { throwError } from 'rxjs/';
 import { map, catchError } from 'rxjs/operators';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { SubirImagenService } from './subir-imagen.service';
 
 
 @Injectable({
@@ -16,11 +17,11 @@ export class UsuarioService {
   public usuario: Usuario;
   public token: string;
 
-  constructor(private httpClient: HttpClient, private router: Router) {
+  constructor(private httpClient: HttpClient, private router: Router, private subirImagenService: SubirImagenService) {
     this.cargarStorage();
   }
 
-  guardarStorage(id: string, token: string, usuario: Usuario) {
+  guardarStorage(id: string, token?: string, usuario?: Usuario) {
     localStorage.setItem('id', id);
     localStorage.setItem('token', token);
     localStorage.setItem('usuario', JSON.stringify(usuario));
@@ -48,11 +49,12 @@ export class UsuarioService {
 
     const url = `${environment.url}/login` ;
     return this.httpClient.post(url, usuario).pipe(map( (resLogin: any) => {
-      console.log('resLogin del map: ', resLogin);
+      // console.log('resLogin del map: ', resLogin);
       this.guardarStorage(resLogin.id, resLogin.token, resLogin.usuarioLogin);
       return resLogin;
     }), catchError((err: any) => {
-      console.log('err: ', err);
+      Swal.fire('Credenciales Incorrectas', 'Verifique e intente nuevamente', 'info');
+      // console.log('err: ', err.error.mensaje);
       return throwError(err);
     }));
   }
@@ -62,10 +64,10 @@ export class UsuarioService {
     // return (this.token.length > 1) ? true : false;
 
     if (localStorage.getItem('token') || localStorage.getItem('usuario')) {
-      console.log('Paso por el login guard de la funcion estaLogueado');
+      // console.log('Paso por el login guard de la funcion estaLogueado');
       return true;
     } else {
-      console.log('Debe estar logueado');
+      // console.log('Debe estar logueado');
       return false;
     }
 }
@@ -75,7 +77,7 @@ export class UsuarioService {
   getUsuarios() {
     const url = `${environment.url}/usuario`;
     return this.httpClient.get(url).pipe(map((usuarios: Usuario) => {
-      console.log('usuarios: ', usuarios);
+      // console.log('usuarios: ', usuarios);
       return usuarios['usuarios'];
     }));
   }
@@ -84,7 +86,7 @@ export class UsuarioService {
   crearusuario(usuario: Usuario) {
     const url = `${environment.url}/usuario`;
     return this.httpClient.post(url, usuario).pipe(map((data: any) => {
-      console.log('data en crear usuario: ', data);
+      // console.log('data en crear usuario: ', data);
       Swal.fire('Usuario Creado', data.usuarioCreado.email, 'success');
       return data.usuarioCreado;
     }), catchError((err) => {
@@ -114,7 +116,7 @@ export class UsuarioService {
    actualizarUsuario(usuario: Usuario) {
       const url = `${environment.url}/usuario/${usuario._id}`;
       return this.httpClient.put(url, usuario).pipe(map((usuarioActualizado: any) => {
-          console.log(usuarioActualizado);
+          // console.log(usuarioActualizado);
           this.guardarStorage(usuarioActualizado.usuarioActualizado.id, this.token, usuarioActualizado.usuarioActualizado);
           Swal.fire('Usuario Actualizado', usuarioActualizado.usuarioActualizado.nombre, 'success');
           return usuarioActualizado.usuarioActualizado;
@@ -136,5 +138,18 @@ export class UsuarioService {
     localStorage.removeItem('usuario');
     localStorage.removeItem('menu');
     this.router.navigate(['/login']);
+  }
+
+
+
+  cambiarImagen(archivo: File, id: string) {
+    this.subirImagenService.subirImagen(archivo, 'usuario', id).then((res: any) => {
+      this.usuario.img = res.usuarioActualizado.img;
+      Swal.fire('Imagen Actualizada', this.usuario.nombre, 'success');
+      this.guardarStorage(id, this.token, this.usuario);
+      // console.log(res);
+    }).catch((err) => {
+      console.log(err);
+    });
   }
 }

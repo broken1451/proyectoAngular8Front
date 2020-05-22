@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {environment} from '../../environments/environment';
-import {Materia} from '../models/materias.model';
+import { Materia } from '../models/materias.model';
 import { map } from 'rxjs/operators';
 import { UsuarioService } from './usuario.service';
 
@@ -10,9 +10,11 @@ import { UsuarioService } from './usuario.service';
 })
 export class MateriasService {
 
+  public materias: Materia;
   constructor(private httpclient: HttpClient, private usuarioService: UsuarioService) {
     this.usuarioService.cargarStorage();
-    console.log( this.usuarioService.usuario);
+    // console.log( this.usuarioService.usuario);
+    this.getMaterias();
   }
 
 
@@ -20,7 +22,17 @@ export class MateriasService {
     const url = `${environment.url}/materia`;
     return this.httpclient.get(url).pipe(map((materias: Materia) => {
       // tslint:disable-next-line: no-string-literal
+      this.materias = materias['materias'];
       return materias['materias'];
+    }));
+  }
+
+  getMateria(id: string) {
+    // /materia/5eb77a68f4c9330c8c0fdaf4
+    const url = `${environment.url}/materia/${id}`;
+    return this.httpclient.get(url).pipe(map((materia: Materia) => {
+      // tslint:disable-next-line: no-string-literal
+      return materia;
     }));
   }
 

@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 // Componentes
 import { AppComponent } from './app.component';
@@ -21,6 +22,10 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { UsuariosComponent } from './pages/usuarios/usuarios.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { MateriasComponent } from './pages/materias/materias.component';
+import { EstudiantesComponent } from './pages/estudiantes/estudiantes.component';
+import { EstudianteComponent } from './pages/estudiantes/estudiante.component';
+import { ImagenPipe } from './pipes/imagen.pipe';
+
 
 
 @NgModule({
@@ -38,14 +43,18 @@ import { MateriasComponent } from './pages/materias/materias.component';
     DashboardComponent,
     UsuariosComponent,
     ProfileComponent,
-    MateriasComponent
+    MateriasComponent,
+    EstudiantesComponent,
+    EstudianteComponent,
+    ImagenPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

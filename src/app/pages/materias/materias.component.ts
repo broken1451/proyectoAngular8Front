@@ -13,6 +13,7 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 export class MateriasComponent implements OnInit {
 
   public materias: any;
+  public loading: boolean;
 
   constructor(private materiaService: MateriasService, private usuarioService: UsuarioService) {
   }
@@ -22,10 +23,21 @@ export class MateriasComponent implements OnInit {
   }
 
   getMaterias() {
-    this.materiaService.getMaterias().subscribe((materias: Materia) => {
-      this.materias = materias;
-      console.log(materias);
-    });
+    this.loading = true;
+    setTimeout(() => {
+      this.materiaService.getMaterias().subscribe((materias: any) => {
+        if (!materias.usuario) {
+          materias.forEach((element) => {
+            if (element.usuario ==  null) {
+              element.usuario = this.usuarioService.usuario;
+            }
+          });
+        }
+        this.materias = materias;
+        this.loading = false;
+        // console.log(materias);
+      });
+    }, 2000);
   }
 
   verMateria(materia: any) {

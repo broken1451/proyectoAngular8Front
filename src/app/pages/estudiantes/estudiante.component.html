@@ -1,0 +1,82 @@
+<div class="row">
+  <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+    <div class="card">
+      <h5 class="card-header">Informacion de Estudiante</h5>
+      <div class="card-body">
+        <form
+          ngNativeValidate
+          #formulario="ngForm"
+          (ngSubmit)="guardar(formulario.value)"
+          data-parsley-validate=""
+        >
+          <div class="form-group">
+            <label for="inputUserName">Nombre</label>
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="estudianteNombre"
+              name="estudianteNombre"
+              type="text"
+            />
+          </div>
+          <div class="form-group">
+            <!-- <label for="inputEmail">Materia Asignada</label> -->
+            <!-- <input  type="text" class="form-control"  name=""> estudianteMateria -->
+            <!-- <input  type="text" class="form-control"  [(ngModel)]="estudianteMateria.nombre" name="estudianteMateria"> -->
+            <label for="inputEmail">Materia Asignada</label>
+            <!-- <select  (change)='cambioSelectHospital($event.target.value)'  [(ngModel)]="studentMateria" name="estudianteMateria" id="" class="form-control" required> -->
+            <!-- <select (change)='cambioSelectMateria($event.target.value)'  [(ngModel)]="studentMateria" name="estudianteMateria" id="" class="form-control" required> -->
+            <select
+              [(ngModel)]="studentMateria"
+              name="estudianteMateria"
+              id=""
+              class="form-control"
+              required
+            >
+              <option [ngValue]="undefined" hidden
+                >Seleccione una materia</option
+              >
+              <option *ngFor="let materia of materias" [value]="materia._id">{{
+                materia.nombre
+              }}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="">Profesor Asignado</label>
+            <input
+              type="text"
+              class="form-control"
+              disabled
+              [(ngModel)]="estudianteProfesor"
+              name="estudianteProfesor"
+            />
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12 pl-0">
+              <p class="text-right">
+                <button type="submit" class="btn btn-rounded btn-primary">
+                  Actualizar
+                </button>
+                <button
+                  class="btn btn-rounded btn-danger ml-3"
+                  [routerLink]="['/estudiantes']"
+                >
+                  Regresar
+                </button>
+              </p>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+    <img
+      src="../../../assets/images/estudiantes1.jpg"
+      class="img-fluid"
+      alt="Responsive image"
+      style="height: 61%;"
+    />
+  </div>
+</div>

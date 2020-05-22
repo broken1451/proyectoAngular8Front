@@ -1,8 +1,13 @@
+
+<div *ngIf="loading" class="card-body text-center">
+    <span class="dashboard-spinner spinner-xs"></span>
+</div>
+
 <div class="row text+center"> 
     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
         <div class="card">
             <h5 class="card-header">Listado de materias</h5>
-                <button (click)='crearMateria()' class="btn btn-rounded btn-success btnButton">
+                <button *ngIf="!loading" (click)='crearMateria()' class="btn btn-rounded btn-success btnButton">
                     <i class="fas fa-plus"></i>
                     Crear Materia
                 </button>
@@ -37,7 +42,7 @@
                                     Ver</button></td>
                                    
                                 <td>
-                                  <button (click)="actualizarMateria(materia)" class="btn btn-rounded btn-primary">  <!--  -->
+                                  <button (click)="actualizarMateria(materia)" class="btn btn-rounded btn-primary"> 
                                     <i class="fas fa-edit"></i>
                                     Editar
                                 </button>

@@ -1,5 +1,9 @@
+
+<div *ngIf="loading" class="card-body text-center">
+    <span class="dashboard-spinner spinner-xs"></span>
+</div>
+
 <div class="row text-center">
-  
     <!-- ============================================================== -->
     <!-- hoverable table -->
     <!-- ============================================================== -->
@@ -13,6 +17,7 @@
                             <th scope="col">#</th>
                             <th scope="col">Nombre</th>
                             <th scope="col">Correo</th>
+                            <th scope="col">Foto</th>
                             <th scope="col">Eliminar usuario</th>
                             <!-- <th scope="col">Foto</th> -->
                         </tr>
@@ -22,6 +27,9 @@
                             <th scope="row">{{i+1}}</th>
                             <td>{{usuario.nombre}}</td>
                             <td>{{usuario.email}}</td>
+                            <td>
+                                <img  [src]="usuario.img | imagen" class=" rounded-circle" style="width: 6%">
+                            </td>
                             <!-- <td>@mdo</td> -->
                             <td>
                                 <button (click)="borrarUsuario(usuario)" class="btn btn-rounded btn-danger">

@@ -11,8 +11,9 @@ export class HeaderComponent implements OnInit {
 
   public usuario: Usuario;
 
-  constructor(private usuarioService: UsuarioService) { 
+  constructor(private usuarioService: UsuarioService) {
     this.usuario = this.usuarioService.usuario;
+    // console.log('this.usuarios: ', this.usuario);
   }
 
   ngOnInit(): void {

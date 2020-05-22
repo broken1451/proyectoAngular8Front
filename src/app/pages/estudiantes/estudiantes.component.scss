@@ -1,0 +1,87 @@
+.btnButton{
+    width: 12%;
+    margin-left: 15px;
+    margin-top: 10px;
+}
+
+.centro{
+    width: 100% !important;
+}
+
+.modal{
+    top: 25% !important;
+}
+
+$default-color: #444;
+
+.form-item {
+  &:not(:first-child) {
+    margin-top: 1em;
+  }
+  
+  > :not(:first-child) {
+    margin-top: 0.25em;
+  }
+}
+
+.form-item__label {
+  display: block;
+}
+
+.form-item__element {
+  display: inline-block;
+  padding: 0.5em;
+  vertical-align: middle;
+  background: #fff;
+  border-radius: 4px;
+  border: 1px solid gray;
+}
+
+.form-item__element--select {
+  appearance: none;
+  padding-right: 2em;
+  
+  // The select element is set to required
+  // as long as the selected options value
+  // is empty the element is not valid.
+  &:invalid {
+    color: gray;
+  }
+  
+  // Styling for browsers which do support
+  // styling select option elements directly
+  [disabled] {
+    color: gray;
+  }
+  
+  option {
+    color: $default-color;
+  }
+}
+
+// Quick and dirty ugly caret replacement.
+.select-wrap {
+  &::after {
+    margin-left: -2em;
+    font-size: 0.75em;
+    pointer-events: none;
+    content: '▼';
+  }
+}
+
+.info {
+  max-width: 42em;
+  
+  p {
+    line-height: 1.5;
+  }
+}
+
+body {
+  padding: 1em;
+  color: $default-color;
+}
+
+* {
+  box-sizing: border-box;
+}
