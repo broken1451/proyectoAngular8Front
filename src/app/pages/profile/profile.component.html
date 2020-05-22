@@ -1,28 +1,135 @@
 <div class="row">
-    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-        <div class="card">
-            <h5 class="card-header">Basic Form</h5>
-            <div class="card-body">
-                <form id="basicform" ngNativeValidate #formulario='ngForm' (ngSubmit)= 'guardar(formulario.value)' data-parsley-validate="">
-                    <div class="form-group">
-                        <label for="inputUserName">Nombre</label>
-                        <input id="inputUserName" type="text" [(ngModel)]="usuario.nombre" name="nombre" data-parsley-trigger="change" required placeholder="Enter user name" autocomplete="off" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="inputEmail">Correo</label>
-                        <input id="inputEmail" type="email"  [(ngModel)]="usuario.email" name="email" data-parsley-trigger="change" required placeholder="Enter email" autocomplete="off" class="form-control">
-                    </div>
-                 
-                    <div class="col-sm-12 pl-0">
-                        <p class="text-right">
-                            <button type="submit" class="btn btn-space btn-primary btn-block">Submit</button>
-                            <button class="btn btn-space btn-secondary btn-block">Cancel</button>
-                        </p>
-                    </div>
-                
-                
-                </form>
-            </div>
-        </div>
+  <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+    <div class="card">
+      <h5 class="card-header">Informacion Usuario</h5>
+      <div class="card-body">
+        <form
+          id="basicform"
+          ngNativeValidate
+          #formulario="ngForm"
+          (ngSubmit)="guardar(formulario.value)"
+          data-parsley-validate=""
+        >
+          <div class="form-group">
+            <label for="inputUserName">Nombre</label>
+            <input
+              id="inputUserName"
+              type="text"
+              [(ngModel)]="usuario.nombre"
+              name="nombre"
+              data-parsley-trigger="change"
+              required
+              placeholder="Enter user name"
+              autocomplete="off"
+              class="form-control"
+            />
+          </div>
+          <div class="form-group">
+            <label for="inputEmail">Correo</label>
+            <input
+              id="inputEmail"
+              type="email"
+              [(ngModel)]="usuario.email"
+              name="email"
+              data-parsley-trigger="change"
+              required
+              placeholder="Enter email"
+              autocomplete="off"
+              class="form-control"
+            />
+          </div>
+
+          <div class="col-sm-12 pl-0">
+            <p class="text-center mt-5">
+              <button
+                type="submit"
+                class="btn btn-space btn-primary btn-rounded"
+              >
+                Actualizar
+              </button>
+              <button
+                class="btn btn-space btn-danger btn-rounded"
+                [routerLink]="['/usuarios']"
+              >
+                Regresar
+              </button>
+            </p>
+          </div>
+        </form>
+      </div>
     </div>
+  </div>
+  <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+    <div class="card card-figure">
+      <!-- .card-figure -->
+      <figure class="figure">
+        <!-- .figure-img -->
+        <div class="figure-img">
+          <h4>Imagen de perfil</h4>
+          <img
+            class="img-fluid imagen float-left w150"
+            [src]="usuario.img | imagen"
+            alt="Card image cap"
+          />
+          <img
+            *ngIf="imagenSubirTemp"
+            class="img-fluid imagen float-left w150"
+            [src]="imagenSubirTemp"
+            alt="Card image cap"
+          />
+          <p>Progreso de carga</p>
+          <div class="progress">
+            <div
+              class="progress-bar progress-bar-striped progress-bar-animated"
+              role="progressbar"
+              aria-valuenow="0"
+              aria-valuemin="0"
+              aria-valuemax=""
+              id="barraProgreso"
+              #barraProgreso
+            ></div>
+          </div>
+          <!-- <div class="alert alert-primary float-left alerta" role="alert">
+                        En esta seccion podra cambiar su imagen de perfil!    
+                    </div> -->
+          <!-- figure-action -->
+          <div class="figure-action">
+            <!-- <button type="file" class="">Quick Action</button> -->
+            <!-- <input type="file" name="" id="" class=""> -->
+            <div class="form-group">
+              <input
+                (change)="seleccionImage($event.target.files[0])"
+                [disabled]="imagenSubir"
+                type="file"
+                class="btn btn-block btn-sm btn-primary"
+                id="customFile"
+                #customFile
+              />
+              <label class="custom-file-label" for="customFile"
+                >Seleccione una imagen</label
+              >
+            </div>
+          </div>
+        </div>
+        <!-- <div *ngIf="loading" class="progress" #barraProgreso> -->
+
+        <!-- /.figure-img -->
+        <!-- .figure-caption -->
+        <figcaption class="figure-caption">
+          <h6 class="figure-title">Nombre Usuario</h6>
+          <p class="text-muted mb-0">{{ usuario.nombre }}</p>
+        </figcaption>
+        <!-- /.figure-caption -->
+      </figure>
+      <!-- /.card-figure -->
+      <button
+        type="button"
+        (click)="cambiarImagen()"
+        [disabled]="!imagenSubir"
+        class="btn btn-block btn-success waves-effect waves-light m-r-10"
+      >
+        <i class="fa fa-save"></i> Actualizar Foto
+      </button>
+    </div>
+  </div>
 </div>

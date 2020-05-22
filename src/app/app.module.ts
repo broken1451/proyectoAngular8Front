@@ -24,6 +24,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { MateriasComponent } from './pages/materias/materias.component';
 import { EstudiantesComponent } from './pages/estudiantes/estudiantes.component';
 import { EstudianteComponent } from './pages/estudiantes/estudiante.component';
+import { ImagenPipe } from './pipes/imagen.pipe';
 
 
 
@@ -44,7 +45,8 @@ import { EstudianteComponent } from './pages/estudiantes/estudiante.component';
     ProfileComponent,
     MateriasComponent,
     EstudiantesComponent,
-    EstudianteComponent
+    EstudianteComponent,
+    ImagenPipe
   ],
   imports: [
     BrowserModule,

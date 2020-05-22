@@ -1,11 +1,16 @@
+
+<div *ngIf="loading" class="card-body text-center">
+    <span class="dashboard-spinner spinner-xs"></span>
+</div>
+
 <div class="row text+center"> 
     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
         <div class="card">
             <h5 class="card-header">Listado de Estudiantes</h5>
             <!-- <button  (click)="crearEstudiante()" class="btn btn-rounded btn-success btnButton"> -->
-            <button type="button"  class="btn btn-rounded btn-success btnButton" data-toggle="modal" data-target="#exampleModal">
+            <button *ngIf="!loading" type="button"  class="btn btn-rounded btn-success btnButton" data-toggle="modal" data-target="#exampleModal">
                 <i class="fas fa-plus"></i>
-                Crear Estudiante
+                Ingreso de Estudiante
             </button>
             <div class="card-body">
                 <div class="table-responsive">
@@ -47,7 +52,7 @@
                                 </button>
                             </td>
                                 <td>
-                                 <button  class="btn btn-rounded btn-danger">
+                                 <button (click)="borrarEstudiantes(estudiante)" class="btn btn-rounded btn-danger">
                                     <i class="fas fa-trash"></i>
                                     Eliminar
                                 </button>

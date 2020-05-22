@@ -13,7 +13,7 @@ export class MateriasService {
   public materias: Materia;
   constructor(private httpclient: HttpClient, private usuarioService: UsuarioService) {
     this.usuarioService.cargarStorage();
-    console.log( this.usuarioService.usuario);
+    // console.log( this.usuarioService.usuario);
     this.getMaterias();
   }
 

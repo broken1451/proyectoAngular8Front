@@ -12,12 +12,10 @@ export class BreadcumbsComponent implements OnInit {
 
   public titulo: string;
   public contenido: string;
+  public verBread: boolean;
 
-  constructor(private router: Router, private title: Title, private metaTag: Meta) { }
-
-  ngOnInit(): void {
+  constructor(private router: Router, private title: Title, private metaTag: Meta) { 
     this.dataRoutes().subscribe((dataRoutes) => {
-
       this.titulo = dataRoutes.titulo;
       this.contenido = dataRoutes.descrip;
       this.title.setTitle(this.titulo);
@@ -32,6 +30,10 @@ export class BreadcumbsComponent implements OnInit {
       // console.log('this.titulo: ', this.titulo);
       // console.log('this.contenido: ', this.contenido);
     });
+
+  }
+
+  ngOnInit(): void {
   }
 
 

@@ -37,4 +37,18 @@ export class EstudianteService {
     }));
   }
 
+  actualizarEstudiante(estudiante: Estudiante) {
+    const url = `${environment.url}/estudiante/${estudiante._id}`;
+    return this.httpClient.put(url, estudiante).pipe(map((student: Estudiante) => {
+      return student;
+    }));
+  }
+
+  eliminarEstudiante(estudiante: Estudiante) {
+    const url = `${environment.url}/estudiante/${estudiante._id}`;
+    return this.httpClient.delete(url).pipe(map((student: Estudiante) => {
+      return student;
+    }));
+  }
+
 }

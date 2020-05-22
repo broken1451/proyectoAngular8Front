@@ -20,8 +20,8 @@ const routes: Routes = [
     component: PagesComponent,
     canActivate: [LoginGuard],
     children: [
-      { path: 'dashboard', component: DashboardComponent, data: {titulo: 'dashboard', descrip: 'Esto es la pagina dashboard'} },
-      { path: 'home', component: HomeComponent, data: {titulo: 'Home', descrip: 'Esto es la pagina principal'} },
+      { path: 'dashboard', component: DashboardComponent, data: {titulo: 'Digimons', descrip: 'Esto es la pagina dashboard'} },
+      { path: 'home', component: HomeComponent, data: {titulo: 'Rick y Morty', descrip: 'Esto es la pagina principal'} },
       { path: 'contenido', component: ContenidoComponent, data: {titulo: 'Contenido', descrip: 'Esto es la pagina del contenido'}},
       { path: 'usuarios', component: UsuariosComponent, data: {titulo: 'Usuarios', descrip: 'Esto es la pagina de los usuarios'}},
       { path: 'profile', component: ProfileComponent, data: {titulo: 'Perfil', descrip: 'Esto es la pagina del perfil de usuario'}},

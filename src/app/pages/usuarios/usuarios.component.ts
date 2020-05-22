@@ -11,8 +11,11 @@ import Swal from 'sweetalert2';
 export class UsuariosComponent implements OnInit {
 
   public usuarios: Usuario[];
+  public loading: boolean;
 
-  constructor(private usuarioService: UsuarioService) { }
+  constructor(private usuarioService: UsuarioService) {
+    this.loading = true;
+  }
 
   ngOnInit(): void {
     this.getUsuarios();
@@ -20,16 +23,20 @@ export class UsuariosComponent implements OnInit {
 
 
   getUsuarios() {
-    this.usuarioService.getUsuarios().subscribe((usuarios: any) => {
-      this.usuarios = usuarios;
-      console.log(usuarios);
-    });
+    this.loading = true;
+    setTimeout(() => {
+      this.usuarioService.getUsuarios().subscribe((usuarios: any) => {
+        this.usuarios = usuarios;
+        this.loading = false;
+        // console.log(usuarios);
+      });
+    }, 2000);
   }
 
   borrarUsuario(usuario: Usuario) {
-      console.log(usuario);
-      console.log(usuario._id);
-      console.log(this.usuarioService.usuario._id);
+      // console.log(usuario);
+      // console.log(usuario._id);
+      // console.log(this.usuarioService.usuario._id);
       if (usuario._id  === this.usuarioService.usuario._id) {
         Swal.fire('No puede Eliminar usuario', 'No se puede eliminar el usuario logueado o a si mismo', 'error');
         return;
