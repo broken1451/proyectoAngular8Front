@@ -4,11 +4,16 @@
 
 export const environment = {
   production: false,
-  url: 'http://localhost:3000',
+  url: 'https://backendestudiante.herokuapp.com',
   urlDigimon: 'https://digimon-api.herokuapp.com/api/digimon',
   urlRickMortyGraph: 'https://rickandmortyapi.com/graphql/character',
   urlRickMorty: 'https://rickandmortyapi.com/api/character',
 };
+//   url: 'http://localhost:3000',
+//   urlDigimon: 'https://digimon-api.herokuapp.com/api/digimon',
+//   urlRickMortyGraph: 'https://rickandmortyapi.com/graphql/character',
+//   urlRickMorty: 'https://rickandmortyapi.com/api/character',
+// };
 
 /*
  * For easier debugging in development mode, you can import the following file
